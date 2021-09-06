@@ -266,19 +266,15 @@ def get_all_game_data(the_game, user_agent_spoof, page):
             # Calculate inv_hltv_rating
             the_game.teams[i].players[i2].inv_hltv_rating = pow(the_game.teams[i].players[i2].hltv_rating, (-1))
 
+
 def connect_to_url(url, user_agent_spoof):
     req = urllib.request.Request(url, headers=user_agent_spoof)
     try:
-        print('Trying to connect to: ' + url)
-        page = urllib.request.urlopen(req)
-        print('URL opened successfully.')
-        print()
-    except:
-        print('Failed to connect to: ' + url)
-        print()
-    page = page.read()
-    page = page.decode('utf-8')
-    return page
+        with urllib.request.urlopen(req) as response:
+            return response.read().decode('utf-8')
+    except Exception as e:
+        print(f'ERROR: {e} ')
+
 
 def export_to_ods(the_game):
     sheet = pyexcel.get_sheet(file_name='SimulationsCopy.ods')

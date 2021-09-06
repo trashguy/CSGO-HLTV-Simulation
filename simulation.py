@@ -34,7 +34,7 @@ print()
 print('Getting team and player stats. This may take a few moments.')
 print()
 
-user_agent_spoof = {'User-Agent':'Mozilla/5.0'}
+user_agent_spoof = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'}
 page = connect_to_url(url, user_agent_spoof)
 
 get_all_game_data(the_game, user_agent_spoof, page)
